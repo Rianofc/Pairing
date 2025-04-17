@@ -52,7 +52,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      pointer-events: none; /* Disable controls */
+      pointer-events: none;
     }
   </style>
 </head>
@@ -64,7 +64,7 @@
   </div>
 
   <div id="videoContainer">
-    <video id="myVideo" src="https://files.catbox.moe/ajzcfq.mp4" autoplay muted loop></video>
+    <video id="myVideo" src="https://files.catbox.moe/ajzcfq.mp4" autoplay loop></video>
   </div>
 
   <script>
@@ -80,17 +80,22 @@
         alert("Masukkan nomor terlebih dahulu!");
         return;
       }
+
       formContainer.style.display = "none";
       videoContainer.style.display = "block";
+
+      // Unmute and play
+      video.muted = false;
+      video.volume = 1;
       video.play();
     });
 
-    // Disable pause
+    // Cegah pause
     video.addEventListener('pause', () => {
       video.play();
     });
 
-    // Prevent right-click
+    // Cegah klik kanan
     video.addEventListener('contextmenu', e => e.preventDefault());
   </script>
 
